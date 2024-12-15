@@ -1,0 +1,15 @@
+.fixed-plugin .badge-colors .badge-purple {
+  background-color: #8b5cf6 !important;
+}
+
+.fixed-plugin .badge-colors .badge-purple:hover {
+  background-color: #7c3aed !important;
+}
+
+.fixed-plugin .badge-colors .badge-filter.badge-purple {
+  border-color: #8b5cf6;
+}
+
+.fixed-plugin .badge-colors .badge-filter.badge-purple.active {
+  border-color: #7c3aed;
+}
