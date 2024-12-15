@@ -1,0 +1,45 @@
+/* dark-mode.css */
+body.dark-mode {
+    background-color: #212529;
+    color: #f8f9fa;
+  }
+  
+  body.dark-mode .navbar {
+    background-color: #343a40 !important;
+    color: #f8f9fa;
+  }
+  
+  body.dark-mode .sidebar {
+    background-color: #343a40;
+    color: #f8f9fa;
+  }
+  
+  body.dark-mode .nav-link, body.dark-mode .nav-item {
+    color: #adb5bd;
+  }
+  
+  body.dark-mode .btn {
+    background-color: #6c757d;
+    color: #f8f9fa;
+  }
+  body.dark-mode .content {
+    background-color: #6c757d;
+    color: #f8f9fa;
+  }
+  
+  body.dark-mode .btn:hover {
+    background-color: #5a6268;
+  }
+  
+  body.dark-mode .form-control {
+    background-color: #495057;
+    color: #f8f9fa;
+    border-color: #6c757d;
+  }
+  .sidebar[data-color="purple"] {
+    background-color: #6f42c1; /* Code de couleur pour le violet */
+  }
+  body.dark-mode .Container{
+    color: #f8f9fa;
+  }
+  
