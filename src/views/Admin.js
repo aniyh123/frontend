@@ -113,6 +113,9 @@ const PersonneApp = () => {
     setShowDetailsModal(false);
     setSelectedPersonne(null);
   };
+  const handleImageClick = (image) => {
+    console.log("Image clicked:", image);
+  };
 
   return (
     <div className="content">

@@ -55,7 +55,6 @@ export const EntreeArticleFormModal = ({ show, handleClose, entreeArticle, onSub
     try {
       const response = await axios.get('http://127.0.0.1:7000/fournisseur/fournisseur');
       setFournisseur(response.data);
-      setFilteredFournisseur(response.data);
     } catch (error) {
       //showAlert('Erreur lors de la récupération des fournisseurs', 'danger');
     }

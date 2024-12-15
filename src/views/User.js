@@ -150,13 +150,6 @@ const Personne = () => {
                 <td>{personne.cin}</td>
                 <td>{personne.adresse}</td>
                 <td>{personne.email}</td>
-                <td>
-                    <img 
-                     src={"http://localhost:7000/sequelize" + article.photoArticle}
-                    alt={article.modele} 
-                    className="w-10 h-10 object-cover"
-                    style={{ maxWidth: '80px' }}
-                  /></td>
                 <td>{personne.categorieUtilisateur ? personne.categorieUtilisateur.nomCategorie : 'N/A'}</td>
                 
                

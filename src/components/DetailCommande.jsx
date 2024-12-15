@@ -1,8 +1,15 @@
-import React, { useState, useEffect } from 'react';
 import { Modal, Button, Table, Badge } from 'react-bootstrap';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 export const CommandeDetailModal = ({ show, handleClose, commande, onEdit, onDelete }) => {
+   // État pour stocker les détails de la commande
+   const [commandeDetails, setCommandeDetails] = useState([]);
+    // Récupération des détails de la commande
+  useEffect(() => {
+    fetchCommandeDetails();
+  
+}, []);
   if (!commande) return null;
 
   // Fonction pour formater la date
@@ -16,30 +23,19 @@ export const CommandeDetailModal = ({ show, handleClose, commande, onEdit, onDel
     });
   };
 
-  // État pour stocker les détails de la commande
-  const [commandeDetails, setCommandeDetails] = useState([]);
-
-  // Récupération des détails de la commande
-  useEffect(() => {
-    const fetchCommandeDetails = async () => {
-      try {
-        const response = await axios.get(`http://127.0.0.1:7000/detailCommande/detailCommande/${commande.id}`);
-        if (Array.isArray(response.data.details)) {
-          setCommandeDetails(response.data.details);
-        } else {
-          setCommandeDetails([]); // Gérer le cas où les données ne sont pas un tableau
-        }
-        console.log(commandeDetails)
-      } catch (error) {
-        console.error('Erreur lors de la récupération des détails de la commande :', error);
+  const fetchCommandeDetails = async () => {
+    try {
+      const response = await axios.get(`http://127.0.0.1:7000/detailCommande/detailCommande/${commande.id}`);
+      if (Array.isArray(response.data.details)) {
+        setCommandeDetails(response.data.details);
+      } else {
+        setCommandeDetails([]); // Gérer le cas où les données ne sont pas un tableau
       }
-    };
-
-    if (commande?.id) {
-      fetchCommandeDetails();
+      console.log(commandeDetails)
+    } catch (error) {
+      console.error('Erreur lors de la récupération des détails de la commande :', error);
     }
-  }, []);
-
+  };
   // Fonction pour obtenir la couleur du badge selon le statut
   const getStatusBadgeVariant = (status) => {
     switch (status) {
