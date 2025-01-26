@@ -89,7 +89,7 @@ var routes = [
         path: "/categorie", 
         name: "Categorie", 
         component: <Categorie />, 
-        icon: "bi bi-truck",
+        icon: "bi bi-tags",
         layout: "/admin"
       },
     ],
@@ -111,7 +111,7 @@ var routes = [
   {
     path: "/rapport",
     name: "Rapport",
-    icon: "bi bi-cash-stack",
+    icon: "bi bi-bar-chart",
     component: <RapportVente />,
     layout: "/admin",
   },

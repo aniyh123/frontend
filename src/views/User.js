@@ -31,8 +31,8 @@ import {
 } from "reactstrap";
 import React , { useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Alert } from 'react-bootstrap';
-import { DeleteConfirmationModal } from '../components/EntreeArticleModal';
+import {  Alert } from 'react-bootstrap';
+
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const Personne = () => {

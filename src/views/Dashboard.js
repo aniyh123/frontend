@@ -48,6 +48,10 @@ const DashboardVentes = () => {
   const labels = dashboardData.caisse.map(item => item.type);
   const data = dashboardData.caisse.map(item => item.montant);
 
+  const formatMontant = (montant) => {
+    const montantNumber = parseFloat(montant);
+    return !isNaN(montantNumber) ? montantNumber.toLocaleString("fr-FR") : montant;
+  };
   const dashboard24HoursPerformanceChart = {
     data: {
       labels:ventesParMoisLabels,
@@ -178,7 +182,7 @@ const DashboardVentes = () => {
                 <Row>
                   <Col md="4" xs="5">
                   <div className="icon-big text-center icon-warning">
-                    <i className="nc-icon nc-globe text-warning" />
+                  <i className="bi bi-box-seam text-warning" />
                   </div>
                   </Col>
                   <Col md="8" xs="7">
@@ -211,7 +215,7 @@ const DashboardVentes = () => {
                 <Col md="8" xs="8">
                   <div className="numbers">
                     <p className="card-category">Chiffre d'affaire</p>
-                    <CardTitle tag="p">{dashboardData.stats.chiffreAffaires}</CardTitle>
+                    <CardTitle tag="p">{formatMontant(dashboardData.stats.chiffreAffaires)}</CardTitle>
                   </div>
                 </Col>
               </Row>
@@ -219,7 +223,7 @@ const DashboardVentes = () => {
             <CardFooter>
               <hr />
               <div className="stats">
-                <i className="fas fa-sync-alt" /> Ariary
+                <i className="fas fa-sync-alt" /> MGA
               </div>
             </CardFooter>
           </Card>
@@ -231,7 +235,7 @@ const DashboardVentes = () => {
                 <Row>
                   <Col md="4" xs="5">
                     <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-vector text-danger" />
+                    <i className="bi bi-people text-danger" /> 
                     </div>
                   </Col>
                   <Col md="8" xs="7">
@@ -312,7 +316,7 @@ const DashboardVentes = () => {
             <CardFooter>
               <hr />
               <div className="stats">
-                <i className="fa fa-history" /> Updated 3 minutes ago
+                <i className="fa fa-history" /> 
               </div>
             </CardFooter>
           </Card>
@@ -333,12 +337,12 @@ const DashboardVentes = () => {
             </CardBody>
             <CardFooter>
               <div className="legend">
-                <i className="fa fa-circle text-primary" />Achat des articles {" "}
-                <i className="fa fa-circle text-warning" />Paiement des commandes {" "}
+                <i className="nc-icon nc-money-coins text-primary" /> Achat des articles {" "}
+                <i className="nc-icon nc-money-coins text-default" /> Paiement des commandes {" "}
               </div>
               <hr />
               <div className="stats">
-                <i className="fa fa-calendar" /> Number of emails sent
+                <i className="fa fa-calendar" /> 
               </div>
             </CardFooter>
           </Card>

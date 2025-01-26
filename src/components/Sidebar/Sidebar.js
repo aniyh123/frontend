@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { Nav, Collapse } from "reactstrap";
 import PerfectScrollbar from "perfect-scrollbar";
-import logo from "logo.svg";
+import scoot from "../../assets/img/scoot.jpg"
 import './sidebar.css'
 
 var ps;
@@ -44,8 +44,13 @@ function Sidebar(props) {
       data-active-color={props.activeColor}
     >
       <div className="logo">
-       
-        <a href="#" className="simple-text logo-normal">
+   
+      <a href="#" className="simple-text logo-normal">
+      <img 
+            src={scoot} 
+          
+            style={{ maxWidth: '40px', marginRight: '6px', }} // Ajustez les styles selon vos besoins
+          />
           SCOOT Master
         </a>
       </div>

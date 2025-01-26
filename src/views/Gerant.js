@@ -31,7 +31,7 @@ import {
   } from "reactstrap";
   import React , { useState, useEffect } from "react";
   import axios from "axios";
-  import { Container, Alert } from 'react-bootstrap';
+  import { Alert } from 'react-bootstrap';
   import { DeleteConfirmationModal } from '../components/Gerant';
   import { GerantFormModal } from '../components/Gerant';
   import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -67,7 +67,9 @@ import {
           await axios.put(`http://127.0.0.1:7000/personne/updatePersonne/${selectedPersonne.id}`, formData);
           showAlert('Personne mis à jour avec succès', 'success');
         } else {
-          await axios.post('http://127.0.0.1:7000/personne/ajoutPersonne', formData);
+          await axios.post("http://127.0.0.1:7000/personne/ajoutPersonne", formData, {
+            headers: { "Content-Type": "multipart/form-data" },
+          });
           showAlert('Personne ajouté avec succès', 'success');
         }
         fetchPersonne();
@@ -151,7 +153,14 @@ import {
                   <td>{personne.cin}</td>
                   <td>{personne.adresse}</td>
                   <td>{personne.email}</td>
-                  <td>{personne.photo}</td>
+                  <td>
+                          <img
+                            src={"http://localhost:7000/sequelize" + personne.photo}
+                            alt={personne.nom}
+                            style={{ width: "60px", height: "60px", cursor: "pointer", borderRadius: "8px", marginRight:"10px"}}
+                          />
+                         
+                        </td>
                   <td>{personne.categorieUtilisateur ? personne.categorieUtilisateur.nomCategorie : 'N/A'}</td>
                   
                  

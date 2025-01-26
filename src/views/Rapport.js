@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Button, Alert, FormControl, InputGroup } from "react-bootstrap";
+import {  Button,  FormControl, InputGroup } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
@@ -24,9 +24,8 @@ const RapportVente = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  useEffect(() => {
-    // Récupérer les données depuis l'API
-    const fetchData = async () => {
+     // Récupérer les données depuis l'API
+     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost:7000/rapport/rapport");
         setRapports(response.data);
@@ -39,6 +38,8 @@ const RapportVente = () => {
       }
     };
 
+  useEffect(() => {
+ 
     fetchData();
   }, []);
 
@@ -84,6 +85,7 @@ const RapportVente = () => {
 
     setFilteredRapports(filtered);
   };
+
     // Fonction pour générer le PDF
     const exportToPDF = () => {
         const doc = new jsPDF();
@@ -156,6 +158,9 @@ const RapportVente = () => {
                 </Button>
                 <Button variant="danger" onClick={exportToPDF}>
                   Télécharger en PDF
+                </Button>
+                <Button variant="info" onClick={fetchData}>
+                  Actualiser
                 </Button>
 
                 <InputGroup>

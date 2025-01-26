@@ -230,11 +230,14 @@ const Commande = () => {
         handleClose={() => setShowDeleteModal(false)}
         onConfirm={confirmDelete}
       />
-      <CommandeDetailModal
-        show={showDetailModal}
-        handleClose={() => setShowDetailModal(false)}
-        commande={selectedCommande}
-      />
+     {selectedCommande && (
+  <CommandeDetailModal
+    show={showDetailModal}
+    handleClose={() => setShowDetailModal(false)}
+    commande={selectedCommande}
+  />
+)}
+
     </div>
   );
 };

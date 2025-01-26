@@ -208,7 +208,7 @@ const ArticleApp = () => {
                         <h5 className="card-title">{article.marque}</h5>
                         <p className="card-text">{article.modele}</p>
                         <p className="card-text">
-                          <strong>Prix:</strong> {formatMontant(article.prixArticle)}Ariary
+                          <strong>Prix:</strong> {formatMontant(article.prixArticle)}
                         </p>
                         <p className="card-text">
                           <strong

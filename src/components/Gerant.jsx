@@ -57,7 +57,7 @@ export const GerantFormModal = ({ show, handleClose, personne, onSubmit }) => {
   return (
     <Modal show={show} onHide={handleClose} size="lg">
       <Modal.Header closeButton>
-        <Modal.Title>{personne ? 'Modifier Administrateur' : 'Ajouter Administrateur'}</Modal.Title>
+        <Modal.Title>{personne ? 'Modifier Gerant' : 'Ajouter Gerant'}</Modal.Title>
       </Modal.Header>
       <Form onSubmit={handleSubmit} encType="multipart/form-data">
         <Modal.Body>

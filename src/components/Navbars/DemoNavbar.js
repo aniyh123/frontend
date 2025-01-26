@@ -102,6 +102,9 @@ function Header({ toggleSidebar, isSidebarVisible }) {
               </InputGroupText>
             </InputGroupAddon>
           </InputGroup>*/}
+          <p 
+           style={{margin: '10px'}} 
+          >Unité monétaire : MGA</p>
 
           {/* Dark Mode Toggle */}
           <Button

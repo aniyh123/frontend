@@ -3,14 +3,33 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 export const CommandeDetailModal = ({ show, handleClose, commande, onEdit, onDelete }) => {
-   // État pour stocker les détails de la commande
-   const [commandeDetails, setCommandeDetails] = useState([]);
+     // État pour stocker les détails de la commande
+     const [commandeDetails, setCommandeDetails] = useState([]);
+ 
     // Récupération des détails de la commande
-  useEffect(() => {
-    fetchCommandeDetails();
-  
-}, []);
-  if (!commande) return null;
+    const fetchCommandeDetails = async () => {
+      try {
+        const response = await axios.get(`http://127.0.0.1:7000/detailCommande/detailCommande/${commande.id}`);
+        if (Array.isArray(response.data.details)) {
+          setCommandeDetails(response.data.details);
+        } else {
+          setCommandeDetails([]); // Gérer le cas où les données ne sont pas un tableau
+        }
+        console.log(commandeDetails)
+      } catch (error) {
+        console.error('Erreur lors de la récupération des détails de la commande :', error);
+      }
+    };
+    useEffect(() => {
+      if (commande) {
+        fetchCommandeDetails();
+      }
+    }, [commande]);
+    
+   
+    console.log("sssss",commande)
+
+
 
   // Fonction pour formater la date
   const formatDate = (dateString) => {
@@ -23,19 +42,7 @@ export const CommandeDetailModal = ({ show, handleClose, commande, onEdit, onDel
     });
   };
 
-  const fetchCommandeDetails = async () => {
-    try {
-      const response = await axios.get(`http://127.0.0.1:7000/detailCommande/detailCommande/${commande.id}`);
-      if (Array.isArray(response.data.details)) {
-        setCommandeDetails(response.data.details);
-      } else {
-        setCommandeDetails([]); // Gérer le cas où les données ne sont pas un tableau
-      }
-      console.log(commandeDetails)
-    } catch (error) {
-      console.error('Erreur lors de la récupération des détails de la commande :', error);
-    }
-  };
+
   // Fonction pour obtenir la couleur du badge selon le statut
   const getStatusBadgeVariant = (status) => {
     switch (status) {
@@ -49,7 +56,6 @@ export const CommandeDetailModal = ({ show, handleClose, commande, onEdit, onDel
         return 'secondary';
     }
   };
-
   return (
     <Modal show={show} onHide={handleClose} size="lg">
       <Modal.Header closeButton>
@@ -71,9 +77,7 @@ export const CommandeDetailModal = ({ show, handleClose, commande, onEdit, onDel
               </tr>
               <tr>
                 <th>Client</th>
-              {commandeDetails.map((d,i)=>{
-                <td key={d.id}>{ d.Personne?.nom || 'Non spécifiée'}</td>
-              })}
+              {commande.personneId}
               </tr>
               <tr>
                 <th>Statut</th>
